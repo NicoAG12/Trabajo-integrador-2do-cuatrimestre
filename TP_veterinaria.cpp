@@ -50,6 +50,9 @@ void crearvet(veterinario v);
 void casist (usuario user);
 void atencvec (veterinario v,turno t);
 void rankingvet (usuario user);
+void Datos (FILE *vete, veterinario v, char pass[10]);//PROTOTIPO PARA EL INICIO DE SESION EN EL CONSULTORIO
+void Turnos (veterinario v, turno t, mascota masc);//PROTOTIPO PARA VER LA LISTA DE ESPERA DE TURNOS
+void Evolucion (FILE *aturn, turno t);//PROTOTIPO PARA REGISTRAR LA EVOLUCION DE LA MASCOTA
 ///////////////////////////////////
 main(){
 	FILE *vete;
@@ -61,24 +64,72 @@ main(){
 	int opcmod2=0;
 	int opcmod3=0;
 	usuario user;
-	mascota masc[50];
+	char pass[10];
+	mascota m;
 	turno t;
-	fecha fec[50];
+	fecha fec;
 	veterinario v;
 		do{
 		opc =menu();
 		system ("cls");
 		switch (opc)
 		{
+	///////////////////////////////////////////////////////////////////////////////////MODULO CONSULTORIO
 		case 1:
 			{
+				do{
+				opcmod1 = -1;
+				opcmod1 = mod1();
+				system ("cls");
+				switch (opcmod1)
+				{
+				case 1:
+					{
+						printf ("//Iniciar Sesion//");
+						Datos (vete, v, pass);
+						printf ("\n\n");
+						system ("pause");
+						break;
+					}
+				case 2:
+					{
+						printf ("\n//Visualizar lista de espera de turnos (Informe)//");
+						Turnos (v,t,m);
+						printf ("\n\n");
+						system ("pause");
+						break;	
+					}
+				case 3:
+					{
+						printf ("\n//Registrar Evolucion de la Mascota//");
+						Evolucion (aturn , t);
+						printf ("\n\n");
+						system ("pause");
+						break;
+					}
+				case 4:
+					{
+						printf ("\nUsted salio del Programa");
+						system ("pause");
+						break;
+					}
+				default:
+				{
+					printf ("\nLa Opcion ingresada es incorrecta\n");
+					system ("pause");
+				}
+						
+				}	
+			 }while(opcmod1 != 4);	
 			break;	
 			}
 			
+	////////////////////////////////////////////////////////////////////////////////////MODULO ASISTENTE
 		case 2:
 			{	
 			break;	
 			}
+	////////////////////////////////////////////////////////////////////////////////////MODULO ADMINISTRACIÓN		
 		case 3:
 			{
 			do{
@@ -89,17 +140,23 @@ main(){
 				{
 				case 1:
 					{	
+					printf ("\n*/*/*/*/*/*/*/*/*/*/\n");
 					printf("Registrar Veterinario");
+					printf ("\n*/*/*/*/*/*/*/*/*/*/\n");
 					crearvet(v);
 					system ("pause");
+					system ("cls");
 					break;	
 					}
 				
 				case 2:
 					{	
+					printf ("\n*/*/*/*/*/*/*/*/*/*/*/*/\n");
 					printf("Registrar Usuario Asistente");
+					printf ("\n*/*/*/*/**/*/**/*/*/*/*/\n");
 					casist (user);
 					system ("pause");
+					system ("cls");
 					break;	
 					}
 				case 3:
@@ -107,6 +164,7 @@ main(){
 					printf("Atenciones por Veterinarios");
 					atencvec (v,t);
 				    system ("pause");
+				    system ("cls");
 				    break;	
 				  
 					}
@@ -114,6 +172,8 @@ main(){
 					{	
 					printf ("Ranking de Veterinarios por Atenciones");
 					rankingvet (user);
+					system ("pause");
+					system ("cls");
 					break;
 					}
 				case 5:
@@ -153,8 +213,7 @@ main(){
 		}
 	
 	}while(opc != 4);
-	}
-	
+	}	
 ///////////////////////////////////////////
 ///////////////////FUNCIONES//////////////
 /////////////////////////////////////////
@@ -217,7 +276,9 @@ void crearvet (veterinario v){
 	int cantnum;
 			system ("cls");
 			vete=fopen("Veterinarios.dat","a+b");
-			printf("Registro de veterinario!");
+			printf ("\n*/*/*/*/*/*//*/*/*/*/*/*/*/*/*/\n");
+			printf("Registro de veterinario");
+			printf ("\n*/*/*/*/*/*//*/*/*/*/*/*/*/*/*/\n");
 			printf("\nIngrese su apellido y nombre: ");
 			_flushall();
 			gets(v.apeynomvet);
@@ -306,8 +367,10 @@ void casist (usuario user) {
 	int cn; //contador de numeros
 	int cm; //contador de mayusculas
 	bool r1, r2,r3,r4,r5; //Booleanos para los requisitos propuestos en el enunciado
-	auser=fopen ("asistentes.dat","w+b");
+	auser=fopen ("asistentes.dat","a+b");
+	printf ("\n*/*/*/*/*/*//*/*/*/*/*/*/*/*/*/\n");
 	printf ("REGISTRO DE USUARIO ASISTENTE");
+	printf ("\n*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/\n");
 	printf ("\nIngrese un nombre de usuario\n");
 	/////////////////////////////////////////// ESPACIO USUARIO
 	_flushall();
@@ -326,8 +389,9 @@ void casist (usuario user) {
 		}
 		else{
 			r1==true;
-				printf ("r1 verdadero");
+			printf ("r1 verdadero");
 		}
+			fread (&user,sizeof(usuario),1,auser);
 				}		
 		//////////////////////////////////////////////////////////////////////////////////////FIN R1
 		if (usuario[0]=='a' ||	usuario[0]=='b' || usuario[0]=='c' || usuario[0]=='d' || usuario[0]=='e' || usuario[0]=='f' || usuario[0]=='g' || usuario[0]=='h' || usuario[0]=='i' || usuario[0]=='j' || usuario[0]=='k' || usuario[0]=='l' || usuario[0]=='m' || usuario[0]=='n' || usuario[0]=='o' || usuario[0]=='p' || usuario[0]=='q' || usuario[0]=='r' || usuario[0]=='s' || usuario[0]=='t' || usuario[0]=='u' || usuario[0]=='v' || usuario[0]=='w' || usuario[0]=='x' || usuario[0]=='y' || usuario[0]=='z'){
@@ -355,6 +419,8 @@ void casist (usuario user) {
 			printf ("r3 verdadero");
 		}
 		///////////////////////////////////////////////////////////////////////////////////// FIN R3
+	
+		
 				if (cn>3){
 						printf ("Error. El numero maximo de numeros permitidos es 3,ingrese nuevamente");
 						gets (usuario);
@@ -445,8 +511,8 @@ valido=false;
 			}
 			}
 		}
-		
-			printf ("Albert trolo");
+		strcpy(user.usuario,usuario);
+		fwrite (&user,sizeof(usuario),1,auser);
 		}
 //////////////////////////////////////////////////////////////FUNCION ATENCION VETERINARIO
 void atencvec (veterinario v,turno t){
@@ -513,6 +579,148 @@ void rankingvet (usuario user){
 	}
 	printf ("\nEl veterinario que registro mas mascotas es: [%s] con [%d] mascotas registradas",umay,may);
 	system ("pause");
+}
+///////////////////////////////////////////////////////////////////////////////// FUNCIONES REY
+void Datos (FILE *vete, veterinario v, char pass[10])
+{
+
+   	int op, matri;
+	bool band;	
+			vete = fopen("Veterinarios.dat","r+b");
+			system("cls");
+			printf("//Inicio de Sesion//");
+			printf("\nIngrese su matricula: ");
+			scanf("%d",&matri);
+			rewind (vete);
+			fread(&v,sizeof(veterinario),1,vete);
+			band=false;
+			while(band==false)
+			{
+				while(!feof(vete))
+				{
+					if(matri == v.matricula)
+					{
+						band=true;
+						fread(&v,sizeof(veterinario),1,vete);
+					}
+					else
+					{
+						fread(&v,sizeof(veterinario),1,vete);
+					}
+				
+				}
+				if(band==false)
+				{
+					printf("\nLa Matricula ingresada es incorrecta, por favor vuelva a ingresarla: ");
+					scanf("%d",&matri);
+				}
+				
+			}
+			printf("\nMatricula Correcta//");
+			printf ("\nIngrese su contraseña: ");
+			_flushall();
+			gets(pass);
+			rewind(vete);
+			fread(&v,sizeof(veterinario),1,vete);
+			band=false;
+			while(band==false)
+			{
+				while(!feof(vete))
+				{
+					if(strcmp(pass,v.contrasenia)==0)
+					{
+						band=true;
+						fread(&v,sizeof(veterinario),1,vete);
+					}
+					else
+					{
+						fread(&v,sizeof(veterinario),1,vete);
+					}
+				}
+				if(band==false)
+				{
+					printf("\nLa Contraseña Ingresada es incorrecta, por favor ingrese su contraseña de nuevo: ");
+					_flushall();
+					gets(pass);
+				}
+			}
+			
+			printf("\nContraseña Correcta\nSesion iniciada con exito!");
+			fclose(vete);
+			system("pause");
+			system("cls");
+			printf("Ingrese su proxima operacion: \n\n2-Visualizar lista de espera de mascotas \n3-Registrar evolucion de los mascotas\n\n4-Salir del programa");
+			printf("\nOpcion: ");
+			scanf("%d",&op);
+			fclose (vete);
+			
+}
+
+void Turnos (veterinario v, turno t, mascota masc)
+{				
+
+				FILE *aturn;
+				FILE *vete;
+				FILE *amasc;
+				aturn=fopen("turnos.dat","r+b");
+				vete=fopen("Veterinarios.dat","r+b");
+				amasc=fopen("Mascotas.dat","r+b");
+				int i=0;
+                int op;
+				
+				system("cls");
+				printf("//LISTA DE ESPERA DE MASCOTAS//");
+				printf ("\n\n");
+				
+				fread(&v,sizeof(veterinario),1,vete);
+				fread(&t,sizeof(turno),1,aturn);
+				fread(&masc,sizeof(mascota),1,amasc);
+				while(!feof(vete)||!feof(aturn)||!feof(amasc))
+				{
+					if(v.matricula==t.matricvet)
+					{
+						printf("\nTurno %d:",i+1);
+						printf("\nFecha:");
+						printf("\n\nDia: %d",t.fect.dia);
+						printf("\nMes: %d",t.fect.mes);
+						printf("\nA%co: %d",164,t.fect.anio);
+						printf("\nDNI del dueño: %d", t.DNI_duenio);
+						printf("\nNombre y apellido: %s", masc.apeynommasc);
+						printf("\nEdad: %d a%cos",t.fect.anio, 164);
+						printf("\nLocalidad: ");
+						puts(masc.localidad);
+						printf("\nPeso: %.2f",masc.peso);
+						
+						fread(&v,sizeof(veterinario),1,vete);
+						fread(&t,sizeof(turno),1,aturn);
+						fread(&masc,sizeof(mascota),1,amasc);
+					}
+					else
+					{
+						fread(&v,sizeof(veterinario),1,vete);
+						fread(&t,sizeof(turno),1,aturn);
+						fread(&masc,sizeof(mascota),1,amasc);
+					}
+				}
+				
+				fclose(vete);
+				fclose(aturn);
+				fclose(amasc);
+				printf("\n\n");
+				system("pause");
+				system("cls");
+}
+void Evolucion (FILE *aturn, turno t)	
+{
+	int opc;
+	
+    aturn = fopen("turnos.dat","a+b");
+    _flushall();
+    printf("\nRegistre la evolucion de la mascota: ");
+	gets(t.detat);
+	fwrite(&t, sizeof(turno), 1,aturn);
+	system("pause");
+	system("cls");
 }
 
 
