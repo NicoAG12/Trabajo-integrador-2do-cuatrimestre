@@ -306,7 +306,7 @@ void casist (usuario user) {
 	int cn; //contador de numeros
 	int cm; //contador de mayusculas
 	bool r1, r2,r3,r4,r5; //Booleanos para los requisitos propuestos en el enunciado
-	auser=fopen ("asistentes.dat","a+b");
+	auser=fopen ("asistentes.dat","w+b");
 	printf ("REGISTRO DE USUARIO ASISTENTE");
 	printf ("\nIngrese un nombre de usuario\n");
 	/////////////////////////////////////////// ESPACIO USUARIO
@@ -319,20 +319,24 @@ void casist (usuario user) {
 		fread (&user,sizeof(usuario),1,auser);
 		while (!feof (auser)){
 			if (strcmp(usuario,user.usuario)==0){
-				printf ("Nombre de usuario ya existente, por favor ingrese nuevamente\n");
+				printf ("Nombre de usuario ya existente, por favor ingrese nuevamente: ");
 				gets (usuario);
 				r1==false;
+				printf ("r1 falso");
 		}
 		else{
 			r1==true;
-		}		
-		//////////////////////////////////////////////////////////////////////////////////////F-iN R1
+				printf ("r1 verdadero");
+		}
+				}		
+		//////////////////////////////////////////////////////////////////////////////////////FIN R1
 		if (usuario[0]=='a' ||	usuario[0]=='b' || usuario[0]=='c' || usuario[0]=='d' || usuario[0]=='e' || usuario[0]=='f' || usuario[0]=='g' || usuario[0]=='h' || usuario[0]=='i' || usuario[0]=='j' || usuario[0]=='k' || usuario[0]=='l' || usuario[0]=='m' || usuario[0]=='n' || usuario[0]=='o' || usuario[0]=='p' || usuario[0]=='q' || usuario[0]=='r' || usuario[0]=='s' || usuario[0]=='t' || usuario[0]=='u' || usuario[0]=='v' || usuario[0]=='w' || usuario[0]=='x' || usuario[0]=='y' || usuario[0]=='z'){
 			r2==true;
+			printf ("r2 verdadero");
 			}
 			else{
 				r2==false;
-				printf ("El nombre de usuario debe comenzar con minuscula, ingrese nuevamente");
+				printf ("El nombre de usuario debe comenzar con minuscula, ingrese nuevamente: ");
 				gets (usuario);
 			}
 		//////////////////////////////////////////////////////////////////////////////////////FIN R2
@@ -343,71 +347,22 @@ void casist (usuario user) {
 		}
 		if (cm<2){
 			r3==false;
-			printf ("El nombre de usuario debe tener 2 mayusculas o mas, ingrese nuevamente");
+			printf ("El nombre de usuario debe tener 2 mayusculas o mas, ingrese nuevamente: ");
 			gets (usuario);
 		}
 		else{
 			r3==true;
+			printf ("r3 verdadero");
 		}
 		///////////////////////////////////////////////////////////////////////////////////// FIN R3
-		for(int i=0;i<20;i++){
-						if(usuario[i]=='1'){
-							cn++;
-						}
-						else{
-							if(usuario[i]=='2'){
-								cn++;
-							}
-							else{
-								if(usuario[i]=='3'){
-									cn++;
-								}
-								else{
-									if(usuario[i]=='4'){
-										cn++;	
-						   			}
-						   			else{
-						   				if(usuario[i]=='5'){
-						   					cn++;
-									    }
-									    else{
-									    	if(usuario[i]=='6'){
-									    		cn++;
-											}
-											else{
-												if(usuario[i]=='7'){
-													cn++;
-												}
-												else{
-													if(usuario[i]=='8'){
-														cn++;
-													}
-													else{
-														if(usuario[i]=='9'){
-															cn++;
-														}
-														else{
-															if(usuario[i]=='0'){
-																cn++;
-															}
-														}
-													}
-												}
-											}
-										}
-								    }
-								}
-							}
-						}
-					}
-					
-					if (cn>3){
-						r4==false;
+				if (cn>3){
 						printf ("Error. El numero maximo de numeros permitidos es 3,ingrese nuevamente");
 						gets (usuario);
+						r4=false;
 					}
 					else{
-						r4==true;
+						r4=true;
+						printf ("r4 verdadero");
 					}
 	///////////////////////////////////////////////////////////////////////////////////////////////////////FIN R4
 					if (cantcaract>10 || cantcaract<6){
@@ -417,30 +372,31 @@ void casist (usuario user) {
 					}
 					else{
 						r5==true;
+						printf ("r5 verdadero");
 					}
 		
-}
 /////////////////////////////////////////////////////////////FIN R5
 
 /////////////////////////////////////////////////////////////ESPACIO CONTRASEÑA
 printf ("Ingrese contrase%ca: ",164);
+_flushall();
 gets (user.contrasena);
 valido=false;
-while (valido==false){
-				if(strstr(user.contrasena,"Q")==NULL &&strstr(user.contrasena,"W")==NULL && strstr(user.contrasena,"E")==NULL && strstr(user.contrasena,"R")==NULL && strstr(user.contrasena,"T")==NULL && strstr(user.contrasena,"Y")==NULL && strstr(user.contrasena,"U")==NULL && strstr(user.contrasena,"I")==NULL && strstr(user.contrasena,"O")==NULL && strstr(user.contrasena,"P")==NULL && strstr(user.contrasena,"A")==NULL && strstr(user.contrasena,"S")==NULL && strstr(user.contrasena,"D")==NULL && strstr(user.contrasena,"F")==NULL && strstr(user.contrasena,"G")==NULL && strstr(user.contrasena,"H")==NULL && strstr(user.contrasena,"J")==NULL && strstr(user.contrasena,"K")==NULL && strstr(user.contrasena,"L")==NULL && strstr(user.contrasena,"Ñ")==NULL && strstr(user.contrasena,"Z")==NULL && strstr(user.contrasena,"X")==NULL && strstr(user.contrasena,"C")==NULL && strstr(user.contrasena,"V")==NULL && strstr(user.contrasena,"B")==NULL && strstr(user.contrasena,"N")==NULL && strstr(user.contrasena,"M")==NULL)
+	while (valido==false){
+				if(strstr(user.contrasena,"A")==NULL && strstr(user.contrasena,"B")==NULL && strstr(user.contrasena,"C")==NULL && strstr(user.contrasena,"D")==NULL && strstr(user.contrasena,"E")==NULL && strstr(user.contrasena,"F")==NULL && strstr(user.contrasena,"G")==NULL && strstr(user.contrasena,"H")==NULL && strstr(user.contrasena,"I")==NULL && strstr(user.contrasena,"J")==NULL && strstr(user.contrasena,"K")==NULL && strstr(user.contrasena,"L")==NULL && strstr(user.contrasena,"M")==NULL && strstr(user.contrasena,"N")==NULL && strstr(user.contrasena,"O")==NULL && strstr(user.contrasena,"P")==NULL && strstr(user.contrasena,"Q")==NULL && strstr(user.contrasena,"R")==NULL && strstr(user.contrasena,"S")==NULL && strstr(user.contrasena,"T")==NULL && strstr(user.contrasena,"U")==NULL && strstr(user.contrasena,"V")==NULL && strstr(user.contrasena,"W")==NULL && strstr(user.contrasena,"X")==NULL && strstr(user.contrasena,"Y")==NULL && strstr(user.contrasena,"Z")==NULL){
+					printf ("La contrase%ca no posee mayuscula, ingrese de nuevo: ",164);
+					gets (user.contrasena);
+				}
+
+				
+				if(strstr(user.contrasena,"a")==NULL && strstr(user.contrasena,"b")==NULL && strstr(user.contrasena,"c")==NULL && strstr(user.contrasena,"d")==NULL && strstr(user.contrasena,"e")==NULL && strstr(user.contrasena,"f")==NULL && strstr(user.contrasena,"g")==NULL && strstr(user.contrasena,"h")==NULL && strstr(user.contrasena,"i")==NULL && strstr(user.contrasena,"j")==NULL && strstr(user.contrasena,"k")==NULL && strstr(user.contrasena,"l")==NULL && strstr(user.contrasena,"m")==NULL && strstr(user.contrasena,"n")==NULL && strstr(user.contrasena,"o")==NULL && strstr(user.contrasena,"p")==NULL && strstr(user.contrasena,"q")==NULL && strstr(user.contrasena,"r")==NULL && strstr(user.contrasena,"s")==NULL && strstr(user.contrasena,"t")==NULL && strstr(user.contrasena,"u")==NULL && strstr(user.contrasena,"v")==NULL && strstr(user.contrasena,"w")==NULL && strstr(user.contrasena,"x")==NULL && strstr(user.contrasena,"y")==NULL && strstr(user.contrasena,"z")==NULL)
 			{
-					printf("La contrase%ca no posee mayuscula, ingrese de nuevo la contrase%ca: ",164,164);
+					printf("La contrase%ca no posee minuscula, ingrese de nuevo: ",164);
 						_flushall;
 						gets(user.contrasena);
 			}
 			else
 			{
-					if(strstr(user.contrasena,"a")==NULL && strstr(user.contrasena,"b")==NULL && strstr(user.contrasena,"c")==NULL && strstr(user.contrasena,"d")==NULL && strstr(user.contrasena,"e")==NULL && strstr(user.contrasena,"f")==NULL && strstr(user.contrasena,"g")==NULL && strstr(user.contrasena,"h")==NULL && strstr(user.contrasena,"i")==NULL && strstr(user.contrasena,"j")==NULL && strstr(user.contrasena,"k")==NULL && strstr(user.contrasena,"l")==NULL && strstr(user.contrasena,"m")==NULL && strstr(user.contrasena,"n")==NULL && strstr(user.contrasena,"o")==NULL && strstr(user.contrasena,"p")==NULL && strstr(user.contrasena,"q")==NULL && strstr(user.contrasena,"r")==NULL && strstr(user.contrasena,"s")==NULL && strstr(user.contrasena,"t")==NULL && strstr(user.contrasena,"u")==NULL && strstr(user.contrasena,"v")==NULL && strstr(user.contrasena,"w")==NULL && strstr(user.contrasena,"x")==NULL && strstr(user.contrasena,"y")==NULL && strstr(user.contrasena,"z"))
-					{
-						printf("La contrase%ca no posee minuscula, ingrese de nuevo la contrase%ca",164,164);
-						_flushall;
-						gets(user.contrasena);
-					}
 						if(strstr(user.contrasena,"0")==NULL && strstr(user.contrasena,"1")==NULL && strstr(user.contrasena,"2")==NULL && strstr(user.contrasena,"3")==NULL && strstr(user.contrasena,"4")==NULL && strstr(user.contrasena,"5")==NULL && strstr(user.contrasena,"6")==NULL && strstr(user.contrasena,"7")==NULL && strstr(user.contrasena,"8")==NULL && strstr(user.contrasena,"9")==NULL)
 						{
 							printf("La contrase%ca no posee numeros, ingrese de nuevo la contrase%ca: ",164,164);
@@ -456,19 +412,19 @@ while (valido==false){
 								gets(user.contrasena);
 							}
 					else{
-							if (cantcaract>32){
+							if (strlen(user.contrasena)>32){
 								printf ("La contrase%ca es demasiado larga, ingrese nuevamente: ",164);
 								_flushall();
 								gets (user.contrasena);
 							}
 							else{
-								if (cantcaract<6){
+								if (strlen (user.contrasena)<6){
 									printf ("La contrase%ca es demasiado corta, ingrese nuevamente: ",164);
 									_flushall();
 									gets (user.contrasena);
 								}
 								else{
-									for (int i=0;i<cantcaract;i++){
+									for (int i=0;i<strlen(user.contrasena);i++){
 										if((user.contrasena[i+2]==user.contrasena[i+1]+1) && (user.contrasena[i+1]==user.contrasena[i]+1)){
 											printf ("No ingrese numeros ni letras consecutivos, ingrese de nuevamente: ");
 											_flushall();
@@ -487,13 +443,11 @@ while (valido==false){
 				}
 			
 			}
+			}
 		}
-
-strcpy (user.usuario,usuario); //COPIA DE LA CADENA USUARIO AL REGISTRO
-printf ("El usuario asistente fue registrado correctamente");
-system ("pause");
-}
-}
+		
+			printf ("Albert trolo");
+		}
 //////////////////////////////////////////////////////////////FUNCION ATENCION VETERINARIO
 void atencvec (veterinario v,turno t){
 	FILE *aturn;
@@ -560,6 +514,5 @@ void rankingvet (usuario user){
 	printf ("\nEl veterinario que registro mas mascotas es: [%s] con [%d] mascotas registradas",umay,may);
 	system ("pause");
 }
-
 
 
