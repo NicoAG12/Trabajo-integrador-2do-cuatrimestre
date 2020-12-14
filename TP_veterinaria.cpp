@@ -168,6 +168,7 @@ main(){
 					printf ("\n*/*/*/*/*/*/*/*/*/*/*/*/\n");
 					printf("Registrar Usuario Asistente");
 					printf ("\n*/*/*/*/*/*/**/*/*/*/*/\n");
+					printf ("\n*/*/*/*/**/*/**/*/*/*/*/\n");
 					casist (user);
 					system ("pause");
 					system ("cls");
@@ -303,7 +304,7 @@ void crearvet (veterinario v){
 			gets (v.contrasenia);
 			cantnum=strlen(v.contrasenia);
 			valido=false;
-			/////////////////////////////////////////////ESPACIO CONTRASE—A VETERINARIO
+			/////////////////////////////////////////////ESPACIO CONTRASE√ëA VETERINARIO
 			while (valido==false){
 				if(strstr(v.contrasenia,"A")==NULL &&strstr(v.contrasenia,"B")==NULL && strstr(v.contrasenia,"C")==NULL && strstr(v.contrasenia,"D")==NULL && strstr(v.contrasenia,"E")==NULL && strstr(v.contrasenia,"F")==NULL && strstr(v.contrasenia,"G")==NULL && strstr(v.contrasenia,"H")==NULL && strstr(v.contrasenia,"I")==NULL && strstr(v.contrasenia,"J")==NULL && strstr(v.contrasenia,"K")==NULL && strstr(v.contrasenia,"L")==NULL && strstr(v.contrasenia,"M")==NULL && strstr(v.contrasenia,"N")==NULL && strstr(v.contrasenia,"O")==NULL && strstr(v.contrasenia,"P")==NULL && strstr(v.contrasenia,"Q")==NULL && strstr(v.contrasenia,"R")==NULL && strstr(v.contrasenia,"S")==NULL && strstr(v.contrasenia,"T")==NULL && strstr(v.contrasenia,"U")==NULL && strstr(v.contrasenia,"V")==NULL && strstr(v.contrasenia,"W")==NULL && strstr(v.contrasenia,"X")==NULL && strstr(v.contrasenia,"Y")==NULL && strstr(v.contrasenia,"Z")==NULL){
 					printf ("La contrase%ca no posee mayuscula, ingrese de nuevo: ",164);
@@ -327,7 +328,7 @@ void crearvet (veterinario v){
 						}
 				else
 				{
-							if(strstr(v.contrasenia,",")!=NULL && strstr(v.contrasenia,".")!=NULL && strstr(v.contrasenia,"-")!=NULL && strstr(v.contrasenia,"·")!=NULL && strstr(v.contrasenia,"È")!=NULL && strstr(v.contrasenia,"Ì")!=NULL && strstr(v.contrasenia,"Û")!=NULL && strstr(v.contrasenia,"˙")!=NULL && strstr(v.contrasenia,",")!=NULL && strstr(v.contrasenia,"¡")!=NULL && strstr(v.contrasenia,"…")!=NULL && strstr(v.contrasenia,"Õ")!=NULL && strstr(v.contrasenia,"”")!=NULL && strstr(v.contrasenia,"⁄")!=NULL)
+							if(strstr(v.contrasenia,",")!=NULL && strstr(v.contrasenia,".")!=NULL && strstr(v.contrasenia,"-")!=NULL && strstr(v.contrasenia,"√°")!=NULL && strstr(v.contrasenia,"√©")!=NULL && strstr(v.contrasenia,"√≠")!=NULL && strstr(v.contrasenia,"√≥")!=NULL && strstr(v.contrasenia,"√∫")!=NULL && strstr(v.contrasenia,",")!=NULL && strstr(v.contrasenia,"√Å")!=NULL && strstr(v.contrasenia,"√â")!=NULL && strstr(v.contrasenia,"√ç")!=NULL && strstr(v.contrasenia,"√ì")!=NULL && strstr(v.contrasenia,"√ö")!=NULL)
 							{
 								printf("La contrase%ca posee signos de puntuacion, ingrese de nuevo la contrase%ca: ",164,164);
 								_flushall;
@@ -366,7 +367,7 @@ void crearvet (veterinario v){
 			
 			}
 		}
-		/////////////////////////////////////////////////////FIN CONTRASE—A VETERINARIO
+		/////////////////////////////////////////////////////FIN CONTRASE√ëA VETERINARIO
 	fwrite(&v,sizeof(veterinario),1,vete);
 	system("pause");
 	system("cls");
@@ -457,7 +458,7 @@ void casist (usuario user) {
 		
 /////////////////////////////////////////////////////////////FIN R5
 
-/////////////////////////////////////////////////////////////ESPACIO CONTRASE—A
+/////////////////////////////////////////////////////////////ESPACIO CONTRASE√ëA
 printf ("Ingrese contrase%ca: ",164);
 _flushall();
 gets (user.contrasena);
@@ -485,7 +486,7 @@ valido=false;
 						}
 				else
 				{
-							if(strstr(user.contrasena,",")!=NULL && strstr(user.contrasena,".")!=NULL && strstr(user.contrasena,"-")!=NULL && strstr(user.contrasena,"·")!=NULL && strstr(user.contrasena,"È")!=NULL && strstr(user.contrasena,"Ì")!=NULL && strstr(user.contrasena,"Û")!=NULL && strstr(user.contrasena,"˙")!=NULL && strstr(user.contrasena,",")!=NULL && strstr(user.contrasena,"¡")!=NULL && strstr(user.contrasena,"…")!=NULL && strstr(user.contrasena,"Õ")!=NULL && strstr(user.contrasena,"”")!=NULL && strstr(user.contrasena,"⁄")!=NULL)
+							if(strstr(user.contrasena,",")!=NULL && strstr(user.contrasena,".")!=NULL && strstr(user.contrasena,"-")!=NULL && strstr(user.contrasena,"√°")!=NULL && strstr(user.contrasena,"√©")!=NULL && strstr(user.contrasena,"√≠")!=NULL && strstr(user.contrasena,"√≥")!=NULL && strstr(user.contrasena,"√∫")!=NULL && strstr(user.contrasena,",")!=NULL && strstr(user.contrasena,"√Å")!=NULL && strstr(user.contrasena,"√â")!=NULL && strstr(user.contrasena,"√ç")!=NULL && strstr(user.contrasena,"√ì")!=NULL && strstr(user.contrasena,"√ö")!=NULL)
 							{
 								printf("La contrase%ca posee signos de puntuacion, ingrese de nuevo la contrase%ca: ",164,164);
 								_flushall;
@@ -527,6 +528,7 @@ valido=false;
 		}
 		strcpy(user.usuario,usuario);
 		fwrite (&user,sizeof(usuario),1,auser);
+
 		}
 //////////////////////////////////////////////////////////////FUNCION ATENCION VETERINARIO
 void atencvec (veterinario v,turno t){
